@@ -37,7 +37,8 @@ docker run --rm -v $(pwd):/local -u $(id -u ${USER}):$(id -g ${USER}) $IMAGE gen
       -g typescript-angular \
       -o /local/clients/typescript-angular ${COMMON_PARAMS} \
       --additional-properties=npmName=pricemonitor-client \
-      --additional-properties=ngVersion=10.0.0
+      --additional-properties=ngVersion=10.0.0 \
+      --additional-properties=npmRepository=https://npm.pkg.github.com
 
 # The generator inserts crappy typescript boundaries which only work for angualr 9. We need to update them.
 sed -i 's/\"typescript\": \">=3.6.0 <3.8.0\"/\"typescript\": \">=3.9.2 <4.0.0\"/g' clients/typescript-angular/package.json
